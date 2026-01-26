@@ -11,8 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LanguageManager {
     private final VIPAccess plugin;
@@ -35,12 +33,6 @@ public class LanguageManager {
 
         createLangFileIfNotExists(langFolder, "en.yml");
         createLangFileIfNotExists(langFolder, "ru.yml");
-        createLangFileIfNotExists(langFolder, "fr.yml");
-        createLangFileIfNotExists(langFolder, "de.yml");
-        createLangFileIfNotExists(langFolder, "pl.yml");
-        createLangFileIfNotExists(langFolder, "be.yml");
-        createLangFileIfNotExists(langFolder, "ua.yml");
-        createLangFileIfNotExists(langFolder, "kk.yml");
 
         String selectedLang = plugin.getConfig().getString("language", "en");
         File langFile = new File(langFolder, selectedLang + ".yml");
@@ -74,6 +66,16 @@ public class LanguageManager {
     private void fillDefaults(YamlConfiguration c, String fileName) {
         c.set("prefix", "<gradient:gold:yellow>[VIPAccess]</gradient> ");
         c.set("kick-message", "<red>Access Denied!");
+        c.set("command-help-grant", "<gray>/vipaccess grant <player> <time> <dark_gray>- <white>Give temp access");
+        c.set("grant-success", "<green>Granted access to <gold><player></gold> for <aqua><time></aqua>");
+        c.set("invalid-time-format", "<red>Invalid time format! Use 1h, 30m, 1d.");
+        c.set("console-enabled", "<gradient:green:aqua>VIPAccess Rework enabled successfully!</gradient>");
+        c.set("command-only-players", "<red>Only for players!");
+        c.set("antibot-disabled", "<green>Anti-Bot protection disabled.");
+        c.set("antibot-enabled", "<red>!!! ANTI-BOT PROTECTION ENABLED !!! Threshold reached.");
+        c.set("antibot-ban-reason", "Anti-Bot Protection");
+        c.set("antibot-kick-ban", "<red>IP Banned due to bot attack.");
+        c.set("antibot-kick-temp", "<red>Anti-Bot Protection Active. Try again later.");
     }
 
     public Component getMessage(String key) {
@@ -84,7 +86,7 @@ public class LanguageManager {
         String raw = langConfig.getString(key, "<red>Missing key: " + key);
         String prefix = langConfig.getString("prefix", "");
 
-        if (key.startsWith("kick-message") || key.startsWith("gui")) {
+        if (key.startsWith("kick-message") || key.startsWith("gui") || key.startsWith("console") || key.startsWith("antibot")) {
             return MiniMessage.miniMessage().deserialize(raw, placeholders);
         }
 

@@ -2,6 +2,7 @@ package com.sunrisestudio.vipaccess;
 
 import com.sunrisestudio.vipaccess.api.VIPLoginEvent;
 import com.sunrisestudio.vipaccess.managers.BotProtectionManager;
+import com.sunrisestudio.vipaccess.managers.TempAccessManager;
 import com.sunrisestudio.vipaccess.utils.LogManager;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -24,12 +25,14 @@ public class VIPAccessListener implements Listener {
     private final VIPAccess plugin;
     private final LogManager logManager;
     private final BotProtectionManager botManager;
+    private final TempAccessManager tempAccessManager;
     private final Cache<UUID, Boolean> spamCache;
 
-    public VIPAccessListener(VIPAccess plugin, LogManager logManager, BotProtectionManager botManager) {
+    public VIPAccessListener(VIPAccess plugin, LogManager logManager, BotProtectionManager botManager, TempAccessManager tempAccessManager) {
         this.plugin = plugin;
         this.logManager = logManager;
         this.botManager = botManager;
+        this.tempAccessManager = tempAccessManager;
         this.spamCache = CacheBuilder.newBuilder()
                 .expireAfterWrite(5, TimeUnit.SECONDS)
                 .build();
@@ -37,13 +40,22 @@ public class VIPAccessListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerLogin(PlayerLoginEvent event) {
+        if (botManager.isLockdown()) {
+            if (!event.getPlayer().hasPermission("vipaccess.admin")) {
+                botManager.punish(event.getAddress(), event);
+                return;
+            }
+        }
+
         if (!plugin.getConfig().getBoolean("enabled", true)) return;
 
         Player player = event.getPlayer();
         String requiredPerm = plugin.getConfig().getString("required-permission", "server.vip");
         String bypassPerm = "vipaccess.bypass";
 
-        boolean hasAccess = player.hasPermission(requiredPerm) || player.hasPermission(bypassPerm);
+        boolean hasAccess = player.hasPermission(requiredPerm)
+                || player.hasPermission(bypassPerm)
+                || tempAccessManager.hasAccess(player.getUniqueId());
 
         if (!hasAccess) {
             if (botManager.isUnderAttack()) {
@@ -74,11 +86,9 @@ public class VIPAccessListener implements Listener {
         }
 
         Component kickComponent = plugin.getMiniMessage().deserialize(finalMsgString);
-
         String legacyKickMessage = LegacyComponentSerializer.legacySection().serialize(kickComponent);
 
         event.setResult(PlayerLoginEvent.Result.KICK_WHITELIST);
-
         event.setKickMessage(legacyKickMessage);
 
         if (spamCache.getIfPresent(player.getUniqueId()) != null) {

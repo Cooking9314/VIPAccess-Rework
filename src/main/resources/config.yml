@@ -1,26 +1,17 @@
 # VIPAccess Configuration
 
-# Включен ли плагин
-enabled: false
+# Is plugin enabled
+enabled: true
 
-# Язык сообщений (en, ru, fr, de, pl, be, ua, kk)
+# Language (en, ru)
 language: ru
 
-# Право, необходимое для входа
+# Permission required to join full server
 required-permission: "server.vip"
 
-# Настройки защиты от бот-атак
+# Anti-Bot Protection Settings
 anti-bot:
-  # Включить защиту
   enabled: true
-
-  # Количество подключений БЕЗ ПРАВ в секунду, после которого включается защита
   threshold: 50
-
-  # Длительность режима защиты в секундах (блокирует все подключения без прав)
   protection-duration: 60
-
-  # Тип наказания для ботов во время атаки:
-  # KICK - Просто кикнуть (меньше нагрузка)
-  # BAN_IP - Забанить IP адрес (эффективно, но может забанить прокси)
   punishment: KICK

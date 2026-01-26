@@ -1,15 +1,82 @@
-prefix: "<gradient:gold:yellow>[VIPAccess]</gradient> "
-kick-message: "<red><bold>НЕТ ДОСТУПА!</bold><newline><gray>На этот сервер могут зайти только <gold>VIP <gray>игроки.<newline><newline><yellow>Купить доступ: <underlined>site.example.com"
-admin-notify: "<gray>Игрок <red><name> <gray>попытался войти без прав."
-no-permission: "<red>У вас нет прав на использование этой команды."
-reload-success: "<green>Плагин успешно перезагружен! Язык: <yellow><lang>"
-gui-title: "Настройки VIPAccess"
-gui-status-on: "<green>Включено"
-gui-status-off: "<red>Выключено"
-gui-perm-label: "Требуемое право"
-gui-perm-current: "<gray>Текущее: <white><perm>"
-gui-reload-label: "<aqua>Перезагрузить плагин"
-gui-toggle-lore: "<gray>Нажми, чтобы переключить"
-command-help-header: "<gradient:gold:yellow>=== Помощь VIPAccess ===</gradient>"
-command-help-gui: "<gray>/vipa gui <dark_gray>- <white>Открыть меню настроек"
-command-help-reload: "<gray>/vipa reload <dark_gray>- <white>Перезагрузить плагин"
+prefix: "<gradient:gold:yellow>[VIPAccess]</gradient> <dark_gray>»</dark_gray> "
+
+kick-message: |
+  <br>
+  <gradient:red:dark_red><bold>СЕРВЕР ПЕРЕПОЛНЕН!</bold></gradient>
+  <br>
+  <gray>Чтобы зайти на сервер прямо сейчас,</gray>
+  <gray>вам необходим статус</gray> <yellow>VIP</yellow><gray>.</gray>
+  <br>
+  <aqua><u>store.example.com</u></aqua>
+
+no-permission: "<red>У вас недостаточно прав для выполнения этой команды."
+reload-success: "<green>Плагин успешно перезагружен! Язык: <yellow><lang></yellow>"
+grant-success: "<green>Временный доступ выдан игроку <yellow><player></yellow> на <aqua><time></aqua>."
+invalid-time-format: "<red>Неверный формат времени! Используйте: <gray>1h, 30m, 1d</gray>"
+command-only-players: "<red>Эту команду могут выполнять только игроки!"
+
+admin-notify: "<gray>Игрок <red><name></red> пытался зайти, но сервер полон."
+
+command-help-header: "<gradient:aqua:blue>--- VIPAccess Помощь ---</gradient>"
+command-help-gui: "<gray>/vipa gui <dark_gray>-</dark_gray> <white>Открыть меню настроек"
+command-help-reload: "<gray>/vipa reload <dark_gray>-</dark_gray> <white>Перезагрузить плагин"
+command-help-grant: "<gray>/vipa grant <nick> <time> <dark_gray>-</dark_gray> <white>Выдать временный доступ"
+
+gui-title: "<dark_gray>Настройки VIPAccess"
+gui-perm-current: "<gray>Текущее: <gold><perm>"
+
+console-enabled: "<gradient:green:aqua>VIPAccess Rework успешно включен!</gradient>"
+
+antibot-disabled: "<green>Защита от ботов отключена."
+antibot-enabled: "<red><bold>!!! ВКЛЮЧЕНА ЗАЩИТА ОТ БОТОВ !!! Превышен лимит подключений.</bold></red>"
+antibot-ban-reason: "Anti-Bot Protection"
+antibot-kick-ban: "<red>Ваш IP заблокирован из-за бот-атаки."
+antibot-kick-temp: "<red>Активна защита от ботов. Попробуйте позже."
+
+# GUI Dashboard
+gui-title-dashboard: "<gradient:blue:aqua>VIPAccess Панель"
+gui-item-settings: "<yellow>Настройки"
+gui-lore-settings: "<gray>Настройка статуса плагина\n<gray>и прав доступа."
+gui-item-players: "<green>Управление игроками"
+gui-lore-players: "<gray>Управление временным доступом\n<gray>и вайтлистами."
+gui-item-antibot: "<red>Защита от ботов"
+gui-lore-antibot: "<gray>Настройка порогов атаки\n<gray>и режима паники."
+gui-item-stats: "<aqua>Статистика"
+gui-lore-stats: "<gray>Просмотр активности плагина."
+
+# GUI Settings
+gui-title-settings: "<dark_gray>Настройки"
+gui-status-on: "<green><bold>ВКЛЮЧЕНО</bold>"
+gui-status-off: "<red><bold>ВЫКЛЮЧЕНО</bold>"
+gui-toggle-lore: "<gray>Нажмите для переключения"
+gui-perm-label: "<yellow>Требуемое право"
+gui-perm-lore: "<gray>Текущее: <gold><perm>"
+gui-reload-label: "<red>Перезагрузить плагин"
+gui-reload-lore: "<gray>Нажмите для перезагрузки конфига"
+
+# GUI AntiBot
+gui-title-antibot: "<dark_red>Настройки Anti-Bot"
+gui-panic-on: "<red><bold>РЕЖИМ ПАНИКИ АКТИВЕН</bold>"
+gui-panic-off: "<green>Режим паники выключен"
+gui-panic-lore: "<gray>Нажмите для переключения LOCKDOWN.\n<red>Блокирует вход ВСЕМ кроме админов!"
+gui-punish-label: "<gold>Режим наказания"
+gui-punish-lore: "<gray>Текущий: <yellow><mode>\n<gray>Нажмите для смены режима."
+gui-threshold-label: "<aqua>Порог атаки"
+gui-threshold-lore: "<gray>Подключений/сек: <white><amount>"
+
+# GUI Temp Access
+gui-title-tempaccess: "<dark_blue>Временный доступ"
+gui-head-name: "<yellow><player>"
+gui-head-lore: "<gray>Осталось: <aqua><time>\n\n<red>Нажмите, чтобы забрать доступ"
+gui-prev-page: "<yellow>Предыдущая страница"
+gui-next-page: "<yellow>Следующая страница"
+gui-page-lore: "<gray>Навигация по страницам"
+gui-back: "<red>Назад"
+gui-back-lore: "<gray>Вернуться в меню"
+
+# Messages
+access-revoked: "<green>Доступ отозван у игрока <yellow><player></yellow>."
+panic-enabled: "<red><bold>АДМИНИСТРАТОР ВКЛЮЧИЛ РЕЖИМ БЛОКИРОВКИ СЕРВЕРА!</bold></red>"
+panic-kick-message: "<red><bold>СЕРВЕР ЗАБЛОКИРОВАН</bold><br><gray>В данный момент сервер находится в аварийном режиме.<br>Попробуйте позже."
+stats-message: "<green>Функция статистики скоро будет доступна!"
+antibot-kick-whitelist: "<red>Включен белый список из-за атаки ботов."

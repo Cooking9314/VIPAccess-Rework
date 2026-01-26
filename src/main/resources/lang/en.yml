@@ -1,15 +1,82 @@
-prefix: "<gradient:gold:yellow>[VIPAccess]</gradient> "
-kick-message: "<red><bold>ACCESS DENIED!</bold><newline><gray>This server is for <gold>VIP <gray>players only.<newline><newline><yellow>Purchase access at: <underlined>store.example.com"
-admin-notify: "<gray>Player <red><name> <gray>tried to join without VIP access."
-no-permission: "<red>You do not have permission to use this command."
-reload-success: "<green>Plugin reloaded successfully! Language: <yellow><lang>"
-gui-title: "VIPAccess Settings"
-gui-status-on: "<green>Enabled"
-gui-status-off: "<red>Disabled"
-gui-perm-label: "Required Permission"
-gui-perm-current: "<gray>Current: <white><perm>"
-gui-reload-label: "<aqua>Reload Plugin"
-gui-toggle-lore: "<gray>Click to toggle"
-command-help-header: "<gradient:gold:yellow>=== VIPAccess Help ===</gradient>"
-command-help-gui: "<gray>/vipa gui <dark_gray>- <white>Open settings menu"
-command-help-reload: "<gray>/vipa reload <dark_gray>- <white>Reload plugin"
+prefix: "<gradient:gold:yellow>[VIPAccess]</gradient> <dark_gray>»</dark_gray> "
+
+kick-message: |
+  <br>
+  <gradient:red:dark_red><bold>SERVER IS FULL!</bold></gradient>
+  <br>
+  <gray>To join the server right now, you need</gray>
+  <yellow>VIP</yellow> <gray>status.</gray>
+  <br>
+  <aqua><u>store.example.com</u></aqua>
+
+no-permission: "<red>You do not have permission to execute this command."
+reload-success: "<green>Plugin successfully reloaded! Language: <yellow><lang></yellow>"
+grant-success: "<green>Temporary access granted to <yellow><player></yellow> for <aqua><time></aqua>."
+invalid-time-format: "<red>Invalid time format! Use: <gray>1h, 30m, 1d</gray>"
+command-only-players: "<red>This command can only be executed by players!"
+
+admin-notify: "<gray>Player <red><name></red> tried to join, but the server is full."
+
+command-help-header: "<gradient:aqua:blue>--- VIPAccess Help ---</gradient>"
+command-help-gui: "<gray>/vipa gui <dark_gray>-</dark_gray> <white>Open settings menu"
+command-help-reload: "<gray>/vipa reload <dark_gray>-</dark_gray> <white>Reload plugin"
+command-help-grant: "<gray>/vipa grant <player> <time> <dark_gray>-</dark_gray> <white>Give temp access"
+
+gui-title: "<dark_gray>VIPAccess Settings"
+gui-perm-current: "<gray>Current: <gold><perm>"
+
+console-enabled: "<gradient:green:aqua>VIPAccess Rework enabled successfully!</gradient>"
+
+antibot-disabled: "<green>Anti-Bot protection disabled."
+antibot-enabled: "<red><bold>!!! ANTI-BOT PROTECTION ENABLED !!! Threshold reached.</bold></red>"
+antibot-ban-reason: "Anti-Bot Protection"
+antibot-kick-ban: "<red>IP Banned due to bot attack."
+antibot-kick-temp: "<red>Anti-Bot Protection Active. Try again later."
+
+# GUI Dashboard
+gui-title-dashboard: "<gradient:blue:aqua>VIPAccess Dashboard"
+gui-item-settings: "<yellow>Settings"
+gui-lore-settings: "<gray>Configure plugin status\n<gray>and permissions."
+gui-item-players: "<green>Player Management"
+gui-lore-players: "<gray>Manage temporary access\n<gray>and whitelists."
+gui-item-antibot: "<red>Anti-Bot Protection"
+gui-lore-antibot: "<gray>Configure attack thresholds\n<gray>and panic modes."
+gui-item-stats: "<aqua>Statistics"
+gui-lore-stats: "<gray>View plugin activity."
+
+# GUI Settings
+gui-title-settings: "<dark_gray>Settings"
+gui-status-on: "<green><bold>ENABLED</bold>"
+gui-status-off: "<red><bold>DISABLED</bold>"
+gui-toggle-lore: "<gray>Click to toggle plugin status"
+gui-perm-label: "<yellow>Required Permission"
+gui-perm-lore: "<gray>Current: <gold><perm>"
+gui-reload-label: "<red>Reload Plugin"
+gui-reload-lore: "<gray>Click to reload config"
+
+# GUI AntiBot
+gui-title-antibot: "<dark_red>Anti-Bot Settings"
+gui-panic-on: "<red><bold>PANIC MODE ACTIVE</bold>"
+gui-panic-off: "<green>Panic Mode Inactive"
+gui-panic-lore: "<gray>Click to toggle LOCKDOWN.\n<red>Blocks ALL non-admin joins!"
+gui-punish-label: "<gold>Punishment Mode"
+gui-punish-lore: "<gray>Current: <yellow><mode>\n<gray>Click to cycle modes."
+gui-threshold-label: "<aqua>Attack Threshold"
+gui-threshold-lore: "<gray>Connections/sec: <white><amount>"
+
+# GUI Temp Access
+gui-title-tempaccess: "<dark_blue>Temporary Access"
+gui-head-name: "<yellow><player>"
+gui-head-lore: "<gray>Time left: <aqua><time>\n\n<red>Click to revoke access"
+gui-prev-page: "<yellow>Previous Page"
+gui-next-page: "<yellow>Next Page"
+gui-page-lore: "<gray>Navigate pages"
+gui-back: "<red>Back"
+gui-back-lore: "<gray>Return to previous menu"
+
+# Messages
+access-revoked: "<green>Access revoked for <yellow><player></yellow>."
+panic-enabled: "<red><bold>SERVER LOCKDOWN INITIATED BY ADMIN!</bold></red>"
+panic-kick-message: "<red><bold>SERVER LOCKDOWN</bold><br><gray>The server is currently in emergency mode.<br>Try again later."
+stats-message: "<green>Statistics feature coming soon!"
+antibot-kick-whitelist: "<red>Server is currently whitelisted due to bot attack."
