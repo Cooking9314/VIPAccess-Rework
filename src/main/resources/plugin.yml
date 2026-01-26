@@ -1,0 +1,25 @@
+name: VIPAccess-Rework
+version: '1.0-SNAPSHOT'
+main: by.t1pe.vipaccess.VIPAccess
+api-version: '1.21'
+authors: [ t1pe ]
+softdepend: [PlaceholderAPI]
+commands:
+  vipaccess:
+    description: Главная команда
+    usage: /vipaccess
+    aliases: [vipa]
+    permission: vipaccess.admin
+permissions:
+  vipaccess.admin:
+    description: Полный доступ к управлению
+    default: op
+  vipaccess.gui:
+    description: Доступ к GUI меню
+    default: op
+  vipaccess.reload:
+    description: Доступ к перезагрузке
+    default: op
+  vipaccess.bypass:
+    description: Игнорирование проверки
+    default: op
